@@ -1,0 +1,61 @@
+<div class="list-container">
+  <h2>Liste des livres</h2>
+
+  <!-- Counter -->
+  <div class="counter">
+    <strong>Total: {{ filteredBooks.length }} livre(s)</strong>
+  </div>
+
+  <!-- Search and Sort Controls -->
+  <div class="controls">
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Rechercher..."
+        [(ngModel)]="searchTerm">
+    </div>
+
+    <div class="sort-box">
+      <select [(ngModel)]="sortBy">
+        <option value="">-- Trier par --</option>
+        <option value="category">Catégorie</option>
+        <option value="availability">Disponibilité</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Books Table -->
+  @if (filteredBooks.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>Titre</th>
+          <th>Auteur</th>
+          <th>Catégorie</th>
+          <th>Disponible</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of filteredBooks; track book.id) {
+          <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.category }}</td>
+            <td>
+              <span [class]="book.isAvailable ? 'available' : 'unavailable'">
+                {{ book.isAvailable ? 'Oui' : 'Non' }}
+              </span>
+            </td>
+            <td class="actions">
+              <button class="edit-btn" (click)="onEdit(book)">Modifier</button>
+              <button class="delete-btn" (click)="onDelete(book.id)">Supprimer</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    <p class="no-books">Aucun livre trouvé.</p>
+  }
+</div>

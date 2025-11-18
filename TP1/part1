@@ -1,0 +1,35 @@
+var a=1;
+let b=2;
+const c=3;
+{
+    var a=3;
+    let b=1;
+    const c=2;
+    console.log(a,b,c)
+}
+console.log(a,b,c);
+
+
+
+let somme1= function(a,b){
+    return a+b;
+}
+let somme = (a,b) => a+b;
+
+
+const user={name:"Noor",age:10,city:"Tunis"}
+const{name,age} =user;
+console.log(name,age);
+
+
+const tab1=[1,2,3];
+const tab2=[4,5,6];
+const fus = [...tab1,...tab2];
+console.log(fus);
+
+
+const obj={x:"X",y:"Y"};
+const copie = {...obj};
+copie.y="Z";
+console.log(obj,copie);
+

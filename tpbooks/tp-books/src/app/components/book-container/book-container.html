@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Book Catalog</h1>
+
+  <app-book-form
+    [categories]="categories"
+    [bookToEdit]="bookToEdit"
+    (bookAdded)="addBook($event)"
+    (bookUpdated)="updateBook($event)"
+    (editCancelled)="cancelEdit()">
+  </app-book-form>
+
+  <app-book-list
+    [books]="books"
+    (deleteBook)="deleteBook($event)"
+    (editBook)="editBook($event)">
+  </app-book-list>
+</div>
